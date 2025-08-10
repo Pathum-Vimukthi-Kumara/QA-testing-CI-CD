@@ -1,0 +1,63 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: driving_license_db
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+
+    - name: Install backend dependencies
+      run: |
+        cd backend
+        npm install
+
+
+    - name: Install frontend dependencies
+      run: |
+        cd frontend
+        npm install
+
+
+    - name: Run backend unit tests
+      run: |
+        cd backend
+        npm test
+
+
+    - name: Run frontend unit tests
+      run: |
+        cd frontend
+        npm test
+
+    # Optionally, add Selenium/automation tests here if they can run headless
+    # - name: Run Selenium UI tests
+    #   run: |
+    #     npm install
+    #     npx mocha ui.test.js

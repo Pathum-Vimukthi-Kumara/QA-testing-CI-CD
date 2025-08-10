@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            white-space: pre-wrap;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Login Test</h1>
+    
+    <div class="form-group">
+        <label for="api-url">API URL:</label>
+        <input type="text" id="api-url" value="/api/auth/login">
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" value="user@example.com">
+    </div>
+    
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" value="password123">
+    </div>
+    
+    <div class="form-group">
+        <label for="userType">User Type:</label>
+        <select id="userType">
+            <option value="user">Citizen</option>
+            <option value="officer">Police Officer</option>
+            <option value="admin">Admin</option>
+        </select>
+    </div>
+    
+    <button id="submit">Test Login</button>
+    
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('submit').addEventListener('click', async function() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'Sending request...';
+            
+            try {
+                const url = document.getElementById('api-url').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const userType = document.getElementById('userType').value;
+                
+                // Create the request data
+                const data = { email, password, userType };
+                
+                // Make the request
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+                
+                // Get response as text first
+                const text = await response.text();
+                
+                // Try to parse it as JSON if possible
+                try {
+                    const json = JSON.parse(text);
+                    resultDiv.innerHTML = `Status: ${response.status}\n\nHeaders: ${JSON.stringify(response.headers, null, 2)}\n\nResponse: ${JSON.stringify(json, null, 2)}`;
+                } catch (e) {
+                    // If not JSON, display as text
+                    resultDiv.innerHTML = `Status: ${response.status}\n\nHeaders: ${JSON.stringify(response.headers, null, 2)}\n\nResponse: ${text}`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

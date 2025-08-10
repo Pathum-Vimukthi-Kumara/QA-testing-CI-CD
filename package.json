@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "name": "driving-license-tracker",
+  "version": "1.0.0",
+  "description": "Driving License Tracking System - Full Stack Application",
+  "engines": {
+    "node": ">=14.x"
+  },
+  "scripts": {
+    "build": "cd frontend && npm install --legacy-peer-deps && npm run build",
+    "dev": "concurrently \"cd Backend && npm run dev\" \"cd frontend && npm start\""
+  },
+  "devDependencies": {
+    "chromedriver": "^120.0.2",
+    "concurrently": "^7.0.0"
+  },
+  "dependencies": {
+    "chai": "^5.2.1",
+    "mocha": "^11.7.1",
+    "selenium-webdriver": "^4.34.0"
+  }
+}

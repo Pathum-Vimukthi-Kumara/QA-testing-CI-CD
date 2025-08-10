@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "frontend/build",
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build",
+        "buildCommand": "cd frontend && npm install --legacy-peer-deps && SKIP_PREFLIGHT_CHECK=true npm run build"
+      }
+    },
+    {
+      "src": "Backend/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["Backend/**"]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/auth/login",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/Backend/server.js"
+    },
+    {
+      "src": "/api/auth/register",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/Backend/server.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      "dest": "/Backend/server.js"
+    },
+    {
+      "src": "/auth/(.*)",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      "dest": "/Backend/server.js"
+    },
+    {
+      "src": "/uploads/(.*)",
+      "dest": "/Backend/server.js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/frontend/build/static/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/frontend/build/favicon.ico"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/frontend/build/manifest.json"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/build/index.html"
+    }
+  ],
+  "env": {
+    "DB_HOST": "bboai925bg2h7iyfqvwh-mysql.services.clever-cloud.com",
+    "DB_USER": "u5pcka2rnhj9wq1h",
+    "DB_PASSWORD": "gBNlNTNYXhNn47HHFmNI",
+    "DB_NAME": "bboai925bg2h7iyfqvwh",
+    "DB_PORT": "3306",
+    "JWT_SECRET": "project_cat_dog_dog",
+    "NODE_ENV": "production"
+  }
+}

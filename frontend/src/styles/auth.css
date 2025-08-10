@@ -1,0 +1,675 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Login specific styles */
+.login-container {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/login.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.main-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.register-card{
+    margin: 0 auto;
+}
+.login-container {
+    justify-content: flex-end;
+    padding-right: 10%;
+}
+
+.auth-card {
+    background: rgba(156, 105, 11, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    min-width: 550px;
+    max-width: 2000px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .auth-card {
+        min-width: auto;
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left:  -200px;
+    max-width: 1000px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    z-index: -1;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+.login-card {
+    background: rgba(255, 107, 71, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    padding: 35px;
+    max-width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile-specific login card styles */
+.mobile-login-card {
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 576px) {
+    .mobile-login-card {
+        padding: 25px 20px;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 380px) {
+    .mobile-login-card {
+        padding: 18px 15px;
+        max-width: 95%;
+        border-radius: 12px;
+    }
+    
+    .mobile-login-card .auth-header h2 {
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+    }
+    
+    .mobile-login-card .auth-header p {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .mobile-login-card .form-label {
+        font-size: 0.85rem;
+    }
+    
+    .mobile-login-card .form-control {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .mobile-login-card .btn-primary {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .mobile-login-card .auth-links {
+        margin-top: 15px;
+        padding-top: 15px;
+        font-size: 0.8rem;
+    }
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 576px) {
+    .auth-header {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 380px) {
+    .auth-header {
+        margin-bottom: 15px;
+    }
+}
+
+.auth-header h2 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.auth-header p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Login card specific text styling */
+.login-card .auth-header h2 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-card .auth-header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.login-card .form-label {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.login-card .form-control {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgb(242, 144, 6);
+    backdrop-filter: blur(10px);
+}
+
+@media (max-width: 576px) {
+    .login-card .form-control {
+        padding: 10px 12px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: whitesmoke;
+}
+
+.login-card .form-control:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.form-control::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.login-card .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-primary {
+    background: #FE6F33;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 30px;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.login-card .btn-primary {
+    background: rgba(254, 111, 51, 0.8);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 576px) {
+    .login-card .btn-primary {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+        border-radius: 8px;
+    }
+}
+
+.login-card .btn-primary:hover {
+    background: rgba(254, 111, 51, 0.9);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(254, 111, 51, 0.3);
+}
+
+.btn-primary:hover {
+    background: white;
+    color: #ff6b47;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid #FE6F33;
+    color: #667eea;
+    border-radius: 10px;
+
+    padding: 10px 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: #FE6F33;
+    color: white;
+    text-decoration: none;
+}
+
+.alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: none;
+}
+
+.alert-danger {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border-left: 4px solid #dc3545;
+}
+
+.alert-success {
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    border-left: 4px solid #28a745;
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.login-card .auth-links p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.login-card .auth-links a {
+    color: #FE6F33;
+    text-decoration: none;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.login-card .auth-links a:hover {
+    color: #ff8a50;
+    text-decoration: underline;
+}
+
+.auth-links a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 10px;
+        align-items: center;
+    }
+    
+    .auth-card {
+        padding: 30px 20px;
+        margin: 0 10px;
+    }
+    
+    .login-container {
+        justify-content: center;
+        padding-right: 0;
+    }
+    
+    .form-control {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+    
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-container {
+        padding: 15px 10px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-label {
+        margin-bottom: 6px;
+        font-size: 0.9rem;
+    }
+    
+    .auth-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .auth-header p {
+        font-size: 0.9rem;
+    }
+    
+    .auth-links {
+        margin-top: 20px;
+        padding-top: 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive design for registration form */
+@media (max-width: 768px) {
+    .register-card {
+        padding: 25px 20px !important;
+        margin: 10px !important;
+        max-width: 95% !important;
+    }
+    
+    .register-card .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .register-card .form-control {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+    
+    .register-card .auth-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .register-container {
+        padding: 5px;
+    }
+    
+    .register-card {
+        padding: 20px 15px !important;
+        margin: 5px !important;
+    }
+    
+    .register-card .auth-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .register-card .auth-header p {
+        font-size: 12px;
+    }
+}
+
+/* Animation for card entrance */
+.auth-card {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-card .form-select {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.login-card .form-select option {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.login-card .form-select:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Register specific styles */
+.register-container {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/Registration.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.register-card {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+.register-card .auth-header h2 {
+    color: white !important;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.register-card .auth-header p {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 14px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.register-card .form-label {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.register-card .form-control {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white !important;
+    backdrop-filter: blur(10px);
+}
+
+.register-card .form-control:focus {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    color: white !important;
+}
+
+.register-card .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.register-card textarea.form-control {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white !important;
+    backdrop-filter: blur(10px);
+    resize: vertical;
+}
+
+.register-card textarea.form-control:focus {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    color: white !important;
+}
+
+.register-card .btn-primary {
+    background: rgba(254, 111, 51, 0.8) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.register-card .btn-primary:hover {
+    background: rgba(254, 111, 51, 0.9) !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(254, 111, 51, 0.3);
+}
+
+.register-card .btn-primary:disabled {
+    background: rgba(254, 111, 51, 0.5) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    transform: none;
+    box-shadow: none;
+}
+
+.register-card .auth-links {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.register-card .auth-links p {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.register-card .auth-links a {
+    color: #FE6F33 !important;
+    text-decoration: none;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.register-card .auth-links a:hover {
+    color: #ff8a50 !important;
+    text-decoration: underline;
+}
+
+.register-card .alert-danger {
+    background: rgba(220, 53, 69, 0.2) !important;
+    color: #ff6b6b !important;
+    border-left: 4px solid #dc3545;
+    backdrop-filter: blur(10px);
+}
+
+.register-card .alert-success {
+    background: rgba(40, 167, 69, 0.2) !important;
+    color: #51cf66 !important;
+    border-left: 4px solid #28a745;
+    backdrop-filter: blur(10px);
+}
+
+.register-card input[type="date"] {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white !important;
+    backdrop-filter: blur(10px);
+    color-scheme: dark;
+}
+
+.register-card input[type="date"]:focus {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.register-card input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.register-card input[type="date"]::-webkit-datetime-edit {
+    color: white;
+}
+
+.register-card input[type="date"]::-webkit-datetime-edit-text {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.register-card input[type="date"]::-webkit-datetime-edit-month-field,
+.register-card input[type="date"]::-webkit-datetime-edit-day-field,
+.register-card input[type="date"]::-webkit-datetime-edit-year-field {
+    color: white;
+}

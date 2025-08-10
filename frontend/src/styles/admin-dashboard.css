@@ -1,0 +1,464 @@
+/* Admin Dashboard Styles */
+.admin-dashboard {
+    min-height: 100vh;
+    background: #E5E5E5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navigation Bar */
+.admin-navbar {
+    background: #2E3F50 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
+    padding: 0.5rem 0;
+}
+
+.admin-navbar .navbar-brand {
+    color: #FE6F33 !important;
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.admin-navbar .navbar-brand i {
+    margin-right: 0.5rem;
+    color: #FE6F33;
+}
+
+.admin-navbar .nav-link {
+    color: #FE6F33 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 4px;
+    margin: 0 0.2rem;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.admin-navbar .nav-link:hover,
+.admin-navbar .nav-link.active {
+    background: rgba(254, 111, 51, 0.1);
+    color: #FE6F33 !important;
+}
+
+/* Main Content */
+.admin-content {
+    padding: 1.5rem;
+}
+
+/* Welcome Section */
+.admin-welcome {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #FE6F33;
+}
+
+.admin-welcome h2 {
+    color: #FE6F33;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.admin-welcome p {
+    color: #666;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Stats Grid */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Stat card styles (already in your setup, shown here for clarity) */
+.stat-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    background: #FE6F33;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.25rem;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.2;
+    white-space: pre-line;
+}
+
+/* Optional: Responsive */
+@media (max-width: 768px) {
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-stats {
+        grid-template-columns: 1fr; /* 1 card per row */
+    }
+}
+
+/* Section Styling */
+.admin-section {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.section-title h3 {
+    color: #333;
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+/* Primary Button */
+.btn-admin-primary {
+    background: #FE6F33;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: background 0.2s ease;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.btn-admin-primary:hover {
+    background: #E55A28;
+    color: white;
+}
+
+/* Table Styling */
+.data-table {
+    border: none;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.data-table th {
+    background: #FE6F33;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.data-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #f8f9fa;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+.data-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    background: #FE6F33;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    padding: 1rem 1.5rem;
+    border-bottom: none;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Form Styling */
+.form-control, .form-select {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #FE6F33;
+    box-shadow: 0 0 0 0.2rem rgba(254, 111, 51, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+/* Info Cards for Profile Modals */
+.info-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid #FE6F33;
+}
+
+.info-card-title {
+    color: #333;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-label {
+    font-weight: 500;
+    color: #666;
+    font-size: 0.85rem;
+    flex: 0 0 auto;
+    margin-right: 1rem;
+}
+
+.info-value {
+    color: #333;
+    font-size: 0.85rem;
+    text-align: right;
+    flex: 1;
+}
+
+/* Status Cards */
+.status-card {
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.status-card.registered {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.status-card.unregistered {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    border: 1px solid #ffeaa7;
+    color: #856404;
+}
+
+.status-card i {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Violation History Table */
+.violation-history-table {
+    font-size: 0.8rem;
+}
+
+.violation-history-table th {
+    background: #2E3F50;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+}
+
+.violation-history-table td {
+    padding: 0.5rem;
+}
+
+/* Summary Cards */
+.summary-card {
+    text-align: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.summary-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.summary-label {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-stats {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .admin-content {
+        padding: 1rem;
+    }
+    
+    .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .action-buttons {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+    
+    .admin-navbar .nav-link {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem !important;
+    }
+}
+
+/* Additional utility classes */
+.text-orange {
+    color: #FE6F33 !important;
+}
+
+.bg-dark-blue {
+    background-color: #2E3F50 !important;
+}
+
+.border-orange {
+    border-color: #FE6F33 !important;
+}
