@@ -76,7 +76,7 @@ jobs:
           -l load-test-results.csv -e -o ./load-test-report
     
     - name: Archive load test results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: load-test-results
         path: |
