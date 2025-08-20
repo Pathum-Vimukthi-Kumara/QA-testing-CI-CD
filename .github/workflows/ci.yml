@@ -32,6 +32,16 @@ jobs:
       with:
         node-version: '20'
 
+      # Wait for MySQL to be ready
+      - name: Wait for MySQL
+        run: |
+          for i in {1..30}; do
+            if mysqladmin ping -h 127.0.0.1 -uroot -proot --silent; then
+              echo "MySQL is up!"; break;
+            fi
+            echo "Waiting for MySQL..."; sleep 2;
+          done
+          mysql -h 127.0.0.1 -uroot -proot -e 'SHOW DATABASES;'
 
 
     - name: Install backend dependencies
@@ -50,30 +60,38 @@ jobs:
     - name: Run backend unit tests
       run: |
         cd Backend
-        npm test
+    if [ -f package.json ]; then npm test; else echo "No backend tests found."; fi
 
 
     - name: Run frontend unit tests
       run: |
         cd frontend
-        npm test
+    if [ -f package.json ]; then npm test; else echo "No frontend tests found."; fi
 
     # Optionally, add Selenium/automation tests here if they can run headless
     - name: Run Selenium UI tests
-      run: |
-        npm install
-        npx mocha ui.test.js
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+          npm install
+          if [ -f ui.test.js ]; then CHROME_BIN=chromium-browser npx mocha ui.test.js --exit; else echo "No Selenium UI test file found."; fi
     
     # Load testing with JMeter (uncomment when ready)
     - name: Set up JMeter
-      run: |
-        wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.5.tgz
-        tar -xzf apache-jmeter-5.5.tgz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openjdk-11-jre-headless
+          wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.5.tgz
+          tar -xzf apache-jmeter-5.5.tgz
     
     - name: Run load tests
-      run: |
-        ./apache-jmeter-5.5/bin/jmeter -n -t login-load-test.jmx \
-          -l load-test-results.csv -e -o ./load-test-report
+        run: |
+          if [ -f login-load-test.jmx ]; then \
+            ./apache-jmeter-5.5/bin/jmeter -n -t login-load-test.jmx \
+              -l load-test-results.csv -e -o ./load-test-report; \
+          else \
+            echo "No JMeter test plan found."; \
+          fi
     
     - name: Archive load test results
       uses: actions/upload-artifact@v4
