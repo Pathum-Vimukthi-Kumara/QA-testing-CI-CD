@@ -49,7 +49,7 @@ describe('Driving License Tracker UI Tests', function () {
   await driver.findElement(By.css('[placeholder="Confirm your password"]')).sendKeys('newpassword');
     const submitBtn = await driver.findElement(By.css('button[type="submit"]'));
     await driver.executeScript('arguments[0].scrollIntoView(true);', submitBtn);
-    await driver.sleep(500); // wait for any animation/overlay
+    await driver.sleep(500); 
     await submitBtn.click();
   // After registration, click the Sign In button
   const signInBtn = await driver.findElement(By.css('button[type="submit"],button.btn-primary'));

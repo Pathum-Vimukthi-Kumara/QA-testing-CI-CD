@@ -47,19 +47,38 @@ jobs:
 
 
 
-    # - name: Run backend unit tests
-    #   run: |
-    #     cd Backend
-    #     npm test
+    - name: Run backend unit tests
+      run: |
+        cd Backend
+        npm test
 
 
-    # - name: Run frontend unit tests
-    #   run: |
-    #     cd frontend
-    #     npm test
+    - name: Run frontend unit tests
+      run: |
+        cd frontend
+        npm test
 
     # Optionally, add Selenium/automation tests here if they can run headless
-    # - name: Run Selenium UI tests
-    #   run: |
-    #     npm install
-    #     npx mocha ui.test.js
+    - name: Run Selenium UI tests
+      run: |
+        npm install
+        npx mocha ui.test.js
+    
+    # Load testing with JMeter (uncomment when ready)
+    - name: Set up JMeter
+      run: |
+        wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.5.tgz
+        tar -xzf apache-jmeter-5.5.tgz
+    
+    - name: Run load tests
+      run: |
+        ./apache-jmeter-5.5/bin/jmeter -n -t login-load-test.jmx \
+          -l load-test-results.csv -e -o ./load-test-report
+    
+    - name: Archive load test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: load-test-results
+        path: |
+          load-test-results.csv
+          load-test-report/
